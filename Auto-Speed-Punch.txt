@@ -1,17 +1,9 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
 local meleeEvent = ReplicatedStorage:WaitForChild("meleeEvent")
 local SoundEvent = ReplicatedStorage:WaitForChild("SoundEvent")
-local LocalPlayer = game.Players.LocalPlayer
-local v11 = workspace.Cameras:GetChildren()
-local hud = LocalPlayer.PlayerGui:WaitForChild("Home"):WaitForChild("hud")
-local CameraFrame = hud:WaitForChild("CameraFrame", 5)
 
-while true do wait()
-	if LocalPlayer.Character then
-		break
-	end
-end
+local Players = game:GetService("Players")
+local LocalPlayer = game.Players.LocalPlayer
 local Character = LocalPlayer.Character
 local Humanoid = Character:WaitForChild("Humanoid", 10)
 
@@ -46,7 +38,6 @@ end
 (function()
 	math.randomseed(tick())
 	u3 = Character.Head:WaitForChild("punchSound")
-	CameraFrame.Position = UDim2.new(0, 0, 1, 0)
 end)()
 
 local function u27()
@@ -64,10 +55,6 @@ end
 
 local punch_start = false;
 local punch_start2 = false;
-
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local plr = game:GetService("Players").LocalPlayer
 
 local Tool = Instance.new("Tool")
 Tool.RequiresHandle = false
@@ -104,5 +91,5 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 
-Tool.Parent = plr.Backpack
-Tool2.Parent = plr.Backpack
+Tool.Parent = LocalPlayer.Backpack
+Tool2.Parent = LocalPlayer.Backpack
