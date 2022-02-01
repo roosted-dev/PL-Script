@@ -1,0 +1,14 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+for _, v in next, debug.getregistry() do
+    if typeof(v) == "function" and getfenv(v).script == LocalPlayer.Character.ClientInputHandler then
+        for a, u in next, debug.getupvalues(v) do
+            if typeof(u) == "number" then
+                debug.setupvalue(v, a, math.huge)
+                print(u)
+                print(typeof(u))
+            end
+        end
+    end
+end
